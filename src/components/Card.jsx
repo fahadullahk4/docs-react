@@ -2,9 +2,15 @@ import React from "react";
 import { FaFileAlt } from "react-icons/fa";
 import { MdDownload } from "react-icons/md";
 import { IoIosClose } from "react-icons/io";
-function Card({ data }) {
+import { motion } from "framer-motion";
+function Card({ data, reference }) {
 	return (
-		<div className="relative w-52 h-64 rounded-[40px] py-10 px-7 bg-slate-900 text-white overflow-hidden flex-shrink-0">
+		<motion.div
+			drag
+			dragConstraints={reference}
+			whileDrag={{ scale: 1.2 }}
+			dragElastic={0.2}
+			className="relative w-52 h-64 rounded-[40px] py-10 px-7 bg-slate-900 text-white overflow-hidden flex-shrink-0">
 			<FaFileAlt />
 			<p className="text-sm font-semibold leading-tight mt-5 ">
 				{data.description}
@@ -29,7 +35,7 @@ function Card({ data }) {
 					</div>
 				)}
 			</footer>
-		</div>
+		</motion.div>
 	);
 }
 
